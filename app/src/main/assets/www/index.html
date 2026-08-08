@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#101214">
+  <meta name="description" content="Entrenador MTB para el camino al Desafío Río Pinto 2027"><meta name="application-name" content="Río Pinto Coach"><meta name="version" content="5.4.400">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./assets/icons/icon-192.png">
+  <link rel="stylesheet" href="./css/app.css">
+  <title>Río Pinto Coach v5</title>
+</head>
+<body>
+  <main class="app" id="homeView">
+    <header class="hero">
+      <p class="eyebrow">CAMINO AL DESAFÍO 2027</p>
+      <h1>RÍO PINTO COACH</h1>
+      <p id="weekTitle" class="week-title"></p>
+    </header>
+
+    <section class="card selectors" aria-label="Selección de entrenamiento">
+      <div><label for="weekSelect">Semana</label><select id="weekSelect"></select></div>
+      <div><label for="daySelect">Día</label><select id="daySelect"></select></div>
+    </section>
+
+    <section class="card phase">
+      <h2>FASE DEL PLAN</h2>
+      <strong id="phaseName" class="phase-name"></strong>
+      <span class="label">Objetivo</span>
+      <p id="phaseObjective" class="center"></p>
+    </section>
+
+    <section class="card objective">
+      <h2>OBJETIVO DEL ENTRENAMIENTO</h2>
+      <div class="metrics">
+        <div><span class="label">Duración</span><strong id="duration"></strong></div>
+        <div><span class="label">Zona</span><strong id="zone"></strong></div>
+        <div><span class="label">Cadencia</span><strong id="cadence"></strong></div>
+        <div><span class="label">Tipo</span><strong id="type"></strong></div>
+      </div>
+      <p id="distance" class="distance"></p>
+    </section>
+
+    <section class="card nutrition"><h2>NUTRICIÓN</h2><p id="nutrition"></p></section>
+    <section class="card technique"><h2>TÉCNICA</h2><p id="technique"></p></section>
+    <button id="progressCard" class="card progress-card" type="button" aria-label="Abrir estadísticas del plan">
+      <div class="progress-card-copy"><h2>PROGRESO DEL PLAN</h2><strong id="progressSummary">0 de 0 entrenamientos</strong><span id="progressWeeks">48 semanas</span></div>
+      <div class="progress-donut" id="progressDonut" style="--progress:0"><span id="progressPercent">0%</span></div>
+    </button>
+    <button id="prepareButton" class="primary">PREPARAR ENTRENAMIENTO</button>
+    <p id="installHint" class="install-hint" hidden></p>
+  </main>
+
+  <section class="prepare-view" id="prepareView" hidden>
+    <header class="prepare-header">
+      <button id="backButton" class="back" aria-label="Volver">‹</button>
+      <div><p class="eyebrow">PREPARAR</p><h1 id="prepareTitle"></h1></div>
+    </header>
+    <div class="prepare-summary"><span id="prepareWeek"></span><strong id="prepareDuration"></strong></div>
+    <section class="phase-list" id="phaseList"></section>
+    <button id="addPhaseButton" class="secondary">+ AGREGAR PERÍODO</button>
+    <button id="resetPhasesButton" class="text-button">Restablecer entrenamiento del manual</button>
+    <button id="prepareConfigButton" class="secondary prepare-config-button" type="button">CONFIGURACIÓN</button>
+    <button id="startButton" class="primary">INICIAR ENTRENAMIENTO</button>
+  </section>
+
+  <section class="training-view" id="trainingView" hidden aria-label="Entrenamiento en curso">
+    <article class="training-card target-card" id="targetCard">
+      <div class="target-heading"><strong id="liveWeekDay"></strong><span id="livePhaseCounter"></span></div>
+      <div class="target-metrics">
+        <div><span>Tiempo</span><strong id="targetTime">—</strong></div>
+        <div><span>Zona</span><strong id="targetZone">—</strong></div>
+        <div><span>Cadencia</span><strong id="targetCadence">—</strong></div>
+        <div><span>Pulsaciones</span><strong id="targetHr">—</strong></div>
+      </div>
+    </article>
+
+    <article class="training-card current-card" id="currentStageCard">
+      <div class="card-caption"><span id="stageCaption">ETAPA</span><span class="phase-title-voice"><strong id="currentPhaseName"></strong><span class="phase-speaker-icon" aria-hidden="true">🔊</span></span><small id="gpsStatus">GPS: —</small></div>
+      <div class="speed-panel phase-speed-navigation">
+        <button id="previousPhaseButton" class="phase-nav-button phase-nav-previous" type="button" aria-label="Etapa anterior">◀</button>
+        <span>km/h</span><strong id="speedNow">—</strong>
+        <button id="nextPhaseButton" class="phase-nav-button phase-nav-next" type="button" aria-label="Etapa siguiente">▶</button>
+      </div>
+      <div class="progress"><i id="stageProgress"></i></div>
+      <div class="stage-bottom-row">
+        <button id="stageClockButton" class="clock-button" aria-label="Alternar tiempo transcurrido y restante">
+          <span id="stageClockLabel">TIEMPO DE ETAPA</span>
+          <strong id="stageClock">00:00</strong>
+        </button>
+        <button id="phaseMusicButton" class="phase-music-button" type="button" aria-label="Pausar música; doble toque para siguiente tema">▶</button>
+        <div class="hr-panel"><span>ppm</span><strong id="hrNow">—</strong></div>
+      </div>
+    </article>
+
+    <article class="training-card total-card">
+      <span class="total-label">ACUMULADO</span>
+      <span class="total-time-label">Tiempo total</span>
+      <strong id="totalClock" class="total-clock">00:00:00</strong>
+      <div class="progress total-progress"><i id="totalProgress"></i></div>
+      <div class="total-grid">
+        <div><span>km/h prom.</span><strong id="speedAvg">—</strong></div>
+        <div class="distance-stat"><span>km recorridos</span><strong id="distanceTotal">—</strong></div>
+        <div><span>desnivel +</span><strong id="elevationTotal">—</strong></div>
+        <div><span>ppm prom.</span><strong id="hrAvg">—</strong></div>
+      </div>
+    </article>
+
+    <section id="drivingView" class="driving-view" hidden aria-label="Vista de conducción">
+      <header class="driving-header">
+        <strong id="drivingPhaseName">Etapa</strong>
+        <span id="drivingPhaseMeta">— · Libre</span>
+      </header>
+      <div class="driving-speed-block">
+        <strong id="drivingSpeed">—</strong>
+        <span>km/h</span>
+      </div>
+      <div class="driving-secondary-grid">
+        <div class="driving-distance-card">
+          <span>Km recorridos</span>
+          <strong id="drivingDistance">—</strong>
+          <small>km</small>
+        </div>
+        <div class="driving-average-card">
+          <span>Km/h promedio</span>
+          <strong id="drivingAverage">—</strong>
+          <small>km/h</small>
+        </div>
+      </div>
+      <div class="driving-progress"><i id="drivingProgress"></i></div>
+    </section>
+    <div id="trainingPager" class="training-pager" aria-hidden="true"><i class="active"></i><i></i></div>
+
+    <nav class="training-controls" aria-label="Controles del entrenamiento">
+      <button id="finishButton" class="control finish">Finalizar</button>
+      <button id="pauseButton" class="control pause">Pausa</button>
+      <button id="configButton" class="control config">Config.</button>
+    </nav>
+  </section>
+
+
+  <dialog id="configDialog" class="config-dialog">
+    <form method="dialog">
+      <div class="dialog-head"><h2>CONFIGURACIÓN</h2><button value="cancel" aria-label="Cerrar">×</button></div>
+      <label class="rpm-override-label" for="cadenceOverride">RPM del pulso de cadencia</label>
+      <div class="rpm-override-row">
+        <input id="cadenceOverride" class="rpm-override" type="number" min="30" max="150" step="1" placeholder="AUTO">
+        <button id="autoCadenceButton" class="rpm-auto-button" type="button" aria-label="Usar cadencia automática">AUTO</button>
+      </div>
+      <p class="field-help">Vacío: utiliza automáticamente la cadencia de la fase.</p>
+      <label for="maxHr">Frecuencia cardíaca máxima</label>
+      <input id="maxHr" type="number" min="120" max="230" inputmode="numeric" placeholder="Ej.: 185">
+      <section class="config-section"><h3>GPS</h3><label class="switch-row"><span>Usar GPS del celular</span><input id="gpsEnabled" type="checkbox"></label><p>Filtra desplazamientos por imprecisión y descarta saltos producidos durante la inactividad.</p></section>
+      <section class="config-section"><h3>AUDIO</h3>
+        <label class="switch-row"><span>Avisos de cambio</span><input id="warningEnabled" type="checkbox"></label>
+        <label>Volumen de avisos <output id="warningVolumeOut"></output></label><input id="warningVolume" type="range" min="0" max="1" step="0.05">
+        <label class="switch-row"><span>Voz descriptiva</span><input id="voiceEnabled" type="checkbox"></label>
+        <label>Volumen de voz <output id="voiceVolumeOut"></output></label><input id="voiceVolume" type="range" min="0" max="1" step="0.05">
+        <label class="switch-row"><span>Pulso de cadencia</span><input id="cadenceEnabled" type="checkbox"></label>
+        <label>Volumen del pulso <output id="cadenceVolumeOut"></output></label><input id="cadenceVolume" type="range" min="0" max="1" step="0.05">
+      </section>
+      <section class="config-section"><h3>MÚSICA POR FASE</h3>
+        <label class="switch-row"><span>Selección automática</span><input id="musicEnabled" type="checkbox"></label>
+        <label>Volumen de música <output id="musicVolumeOut"></output></label><input id="musicVolume" type="range" min="0" max="1" step="0.05">
+        <div class="music-library-card">
+          <div class="music-library-head"><strong>Biblioteca musical</strong><span id="musicPermissionBadge">Sin acceso</span></div>
+          <div id="musicFolderName" class="music-folder-name">Sin carpeta seleccionada</div>
+          <div class="music-library-meta"><span><b id="musicTrackCount">0</b> canciones</span><span>Actualizada: <b id="musicIndexedAt">—</b></span></div>
+          <div class="music-library-actions"><button id="chooseMusicFolder" type="button">Seleccionar carpeta</button><button id="reindexMusicFolder" type="button" class="secondary">Reindexar</button></div>
+          <label class="file-button music-file-fallback">Seleccionar canciones manualmente<input id="musicFiles" type="file" accept="audio/*" multiple></label>
+          <p id="musicLibraryStatus">Seleccione una carpeta de memoria interna o tarjeta SD. Si Android revoca el permiso, la app solicitará volver a autorizarla.</p>
+        </div>
+      </section>
+      <button id="saveConfigButton" value="default" class="primary dialog-save">GUARDAR</button>
+    </form>
+  </dialog>
+
+  <dialog id="phaseEditorDialog" class="config-dialog phase-editor-dialog">
+    <form method="dialog" id="phaseEditorForm">
+      <div class="dialog-head"><h2>EDITAR PERÍODO</h2><button value="cancel" aria-label="Cerrar">×</button></div>
+      <input id="editPhaseIndex" type="hidden">
+      <label>Trabajo<input id="editPhaseName" required></label>
+      <label>Tiempo<input id="editPhaseDuration" required placeholder="Ej.: 10 min"></label>
+      <label>Técnica<input id="editPhaseTechnique" placeholder="Ej.: Pedaleo redondo"></label>
+      <label>Zona<input id="editPhaseZone" placeholder="Ej.: Z2"></label>
+      <label>Cadencia<input id="editPhaseCadence" placeholder="Ej.: 85–95 rpm"></label>
+      <label>Pulsaciones<input id="editPhaseHr" placeholder="Ej.: 130–145 ppm"></label>
+      <section class="phase-music-editor"><h3>MÚSICA DE ESTA ETAPA</h3>
+        <label>Modo<select id="editPhaseMusic"><option value="auto">Selección automática</option><option value="off">Sin música</option></select></label>
+        <div id="preferredMusicFields">
+          <label>Tema preferido 1<select id="editPhaseMusic1"></select></label>
+          <label>Tema preferido 2<select id="editPhaseMusic2"></select></label>
+          <label>Tema preferido 3<select id="editPhaseMusic3"></select></label>
+          <p>Los temas preferidos se reproducen primero. Después, la selección continúa automáticamente con canciones compatibles y no repetidas.</p>
+        </div>
+      </section>
+      <button id="savePhaseButton" value="default" class="primary dialog-save">GUARDAR PERÍODO</button>
+    </form>
+  </dialog>
+
+  <dialog id="finishDialog" class="config-dialog finish-dialog">
+    <form method="dialog">
+      <h2>Finalizar entrenamiento</h2>
+      <p>¿Desea guardar los valores del entrenamiento?</p>
+      <div class="dialog-actions finish-actions"><button value="cancel" class="control config">Cancelar</button><button id="saveFinish" value="default" class="control pause">Guardar</button><button id="confirmFinish" value="default" class="control finish">Salir sin guardar</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="historyDialog" class="config-dialog history-dialog">
+    <form method="dialog">
+      <div class="dialog-head"><h2>ESTADÍSTICAS</h2><button value="cancel" aria-label="Cerrar">×</button></div>
+      <div id="historySummary" class="history-summary"></div>
+      <div id="historyList" class="history-list"></div>
+      <button value="cancel" class="primary dialog-save">CERRAR</button>
+    </form>
+  </dialog>
+
+  <script defer src="./js/app.bundle.js"></script>
+</body>
+</html>

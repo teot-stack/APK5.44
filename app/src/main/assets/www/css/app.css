@@ -1,0 +1,287 @@
+*{box-sizing:border-box}
+:root{color-scheme:dark;--bg:#101214;--card:#1b2026;--card2:#232a32;--text:#f5f7fa;--muted:#b8c0ca;--green:#7bc043;--blue:#6aa8ff;--yellow:#e0c23b;--orange:#ff9b45;--red:#ef6262}
+html{background:var(--bg)}body{margin:0;background:linear-gradient(180deg,#14181d 0,var(--bg) 260px);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh}button,select,input{font:inherit}.app,.prepare-view{max-width:460px;margin:auto;padding:18px 18px calc(24px + env(safe-area-inset-bottom))}.hero{text-align:center;padding:8px 0 4px}.eyebrow{margin:0 0 5px;color:#9fb1c5;font-size:12px!important;font-weight:800;letter-spacing:.14em}h1{margin:0;font-size:32px;line-height:1.05}.week-title{margin:9px 0 0;font-size:18px;color:#dbe5ef;font-weight:600}.card{background:linear-gradient(145deg,#1e242b,#191e24);border-radius:18px;padding:10px 16px 16px;margin:12px 0;border-left:6px solid var(--blue);box-shadow:0 5px 14px rgba(0,0,0,.27);border-top:1px solid rgba(255,255,255,.045)}.phase{border-left-color:#58c472}.nutrition{border-left-color:var(--yellow)}.technique{border-left-color:var(--orange)}h2{margin:0 0 10px;font-size:16px;letter-spacing:.04em}label,.label{display:block;color:var(--muted);margin-bottom:8px;font-size:17px}.selectors{display:grid;grid-template-columns:1fr 1fr;gap:12px}select{width:100%;padding:13px 12px;border:1px solid #39434e;border-radius:12px;background:#2a313b;color:#fff;font-size:17px;font-weight:700}.phase-name{display:block;text-align:center;font-size:21px;margin:2px 0 14px}.center{text-align:center;font-size:17px}p{font-size:18px;line-height:1.38;margin:5px 0}.metrics{display:grid;grid-template-columns:1fr 1fr;gap:14px 10px}.metrics>div{text-align:center;background:rgba(255,255,255,.035);border-radius:13px;padding:10px 6px}.metrics .label{margin-bottom:8px}.metrics strong{display:block;font-size:21px;line-height:1.15}.distance{text-align:center;color:#d6e1ec;margin-top:13px;font-size:16px}.primary{width:100%;padding:18px;border:0;border-radius:16px;background:linear-gradient(180deg,#8ad24d,#71b83a);color:#101410;font-size:18px;font-weight:850;letter-spacing:.02em;box-shadow:0 5px 14px rgba(70,130,30,.3)}.primary:active,.control:active{transform:translateY(1px)}.install-hint{text-align:center;color:var(--muted);font-size:14px}.prepare-view{min-height:100vh}.prepare-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}.prepare-header h1{font-size:23px}.back{width:48px;height:48px;border:0;border-radius:14px;background:#252d36;color:#fff;font-size:36px;line-height:1}.prepare-summary{display:flex;justify-content:space-between;align-items:center;background:#1b2026;border-radius:14px;padding:14px 16px;margin:12px 0}.phase-list{display:grid;gap:10px;margin:12px 0 18px}.phase-row{display:grid;grid-template-columns:38px 1fr auto;gap:11px;align-items:center;background:var(--card);border-radius:15px;padding:13px;border-left:5px solid var(--zone,#64748b)}.phase-index{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#2b343e;font-weight:800}.phase-row h3{font-size:17px;margin:0 0 4px}.phase-row p{font-size:14px;color:var(--muted);margin:0}.phase-time{text-align:right;font-size:16px;font-weight:800}
+
+/* Entrenamiento en curso: una sola pantalla, sin scroll */
+.training-view{height:100dvh;max-width:520px;margin:auto;padding:calc(8px + env(safe-area-inset-top)) 10px calc(8px + env(safe-area-inset-bottom));display:grid;grid-template-rows:minmax(0,20fr) minmax(0,35fr) minmax(0,35fr) minmax(58px,10fr);gap:7px;overflow:hidden;background:var(--bg)}.training-card{min-height:0;overflow:hidden;border-radius:16px;border-left:5px solid var(--zone-color,var(--blue));border-top:1px solid rgba(255,255,255,.045);box-shadow:0 4px 12px rgba(0,0,0,.28);padding:8px 10px}.target-card{display:grid;grid-template-rows:auto auto 1fr;gap:3px;background:linear-gradient(145deg,#223546,#1c2b39)}.target-heading{display:flex;justify-content:space-between;align-items:center;font-size:clamp(11px,1.7vh,14px);color:#dce6f0}.target-heading span{color:var(--muted);font-weight:700}.target-card h2{font-size:clamp(13px,2vh,17px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin:0;text-align:center}.target-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;min-height:0}.target-metrics>div,.live-row>div,.total-grid>div{display:flex;min-width:0;flex-direction:column;align-items:center;justify-content:center;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.055);border-radius:10px;text-align:center}.target-metrics span,.live-row span,.total-grid span{color:var(--muted);font-size:clamp(10px,1.5vh,14px);line-height:1.1}.target-metrics strong{font-size:clamp(13px,2.4vh,21px);line-height:1.05;margin-top:6px;white-space:nowrap}.current-card{display:grid;grid-template-rows:auto 1fr 5px minmax(43px,27%);gap:4px;background:linear-gradient(145deg,#244234,#1c3228)}.card-caption{display:flex;justify-content:space-between;gap:8px;color:var(--muted);font-size:clamp(9px,1.35vh,12px);font-weight:800}.card-caption strong{color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.clock-button{border:0;background:transparent;color:var(--text);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0;min-height:0}.clock-button span,.total-label{font-size:clamp(9px,1.4vh,12px);color:var(--muted);font-weight:800;letter-spacing:.06em}.clock-button strong{font-variant-numeric:tabular-nums;font-size:clamp(44px,9vh,74px);line-height:.96}.clock-button.remaining strong,.clock-button.remaining span{color:var(--yellow)}.progress{height:5px;background:#303943;border-radius:999px;overflow:hidden}.progress i{display:block;width:0;height:100%;background:var(--zone-color,var(--green));transition:width .25s linear}.live-row{display:grid;grid-template-columns:1fr 1fr;gap:7px}.live-row strong{font-size:clamp(24px,4.7vh,39px);line-height:1}.total-card{display:grid;grid-template-rows:auto minmax(28px,1fr) 5px minmax(73px,48%);gap:6px;text-align:center;background:linear-gradient(145deg,#342b46,#292236)}.total-clock{display:flex;align-items:center;justify-content:center;font-variant-numeric:tabular-nums;font-size:clamp(31px,6.4vh,53px);line-height:1}.total-progress i{background:var(--green)}.total-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:5px}.total-grid strong{font-size:clamp(18px,3.2vh,28px);line-height:1.05;margin-top:6px}.training-controls{display:grid;grid-template-columns:1fr 1.25fr 1fr;gap:7px;min-height:0}.control{border:0;border-radius:13px;color:#fff;font-weight:850;font-size:clamp(13px,2.1vh,17px);padding:5px}.finish{background:linear-gradient(180deg,#9b4040,#783030)}.pause{background:linear-gradient(180deg,#9be453,#70b93d);color:#101410}.pause.is-paused{background:linear-gradient(180deg,#ffd55a,#e5aa2d)}.config{background:linear-gradient(180deg,#3a4653,#28323d)}
+
+.config-dialog{width:min(90vw,420px);border:1px solid #3b4651;border-radius:18px;background:#1b2026;color:var(--text);padding:0;box-shadow:0 20px 60px #000}.config-dialog::backdrop{background:rgba(0,0,0,.72)}.config-dialog form{padding:18px}.dialog-head{display:flex;align-items:center;justify-content:space-between}.dialog-head h2{margin:0}.dialog-head button{border:0;background:transparent;color:#fff;font-size:30px}.config-dialog label{margin-top:16px}.config-dialog input[type=number]{width:100%;border:1px solid #46515d;border-radius:12px;background:#252d36;color:#fff;padding:13px}.switch-row{display:flex;justify-content:space-between;align-items:center}.switch-row input{width:24px;height:24px}.config-dialog p{font-size:14px;color:var(--muted)}.dialog-save{margin-top:16px;padding:14px}.dialog-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}.finish-dialog h2{text-align:center}[hidden]{display:none!important}@media (min-width:700px){.app,.prepare-view{padding-top:30px}}@media (max-height:650px){.training-view{gap:4px;padding-top:4px}.training-card{border-radius:12px;padding:5px 8px}.target-metrics{gap:3px}.clock-button strong{font-size:clamp(38px,8vh,56px)}.training-controls{min-height:52px}}
+
+
+/* v4.1.004 · evaluación ergonómica de Entrenamiento en curso */
+.training-view{
+  grid-template-rows:minmax(0,13fr) minmax(0,34fr) minmax(0,46fr) minmax(44px,7fr);
+  gap:5px;
+  padding:calc(5px + env(safe-area-inset-top)) 8px calc(5px + env(safe-area-inset-bottom));
+}
+.training-card{padding:5px 8px;border-radius:14px}
+.target-card{grid-template-rows:auto minmax(0,1fr);gap:1px}
+.target-heading{font-size:clamp(10px,1.45vh,13px);line-height:1}
+.target-metrics{gap:4px;align-items:stretch}
+.target-metrics>div{border-radius:8px;padding:1px 2px;min-height:0}
+.target-metrics span{font-size:clamp(7px,1.05vh,9px)}
+.target-metrics strong{font-size:clamp(12px,1.85vh,17px);line-height:.95}
+.current-card{grid-template-rows:auto minmax(0,1fr) 5px minmax(50px,29%);gap:2px}
+.card-caption{font-size:clamp(13px,2vh,18px);line-height:1}
+.clock-button span,.total-label{font-size:clamp(13px,2vh,18px)}
+.clock-button strong{font-size:clamp(72px,13vh,116px);line-height:.86}
+.live-row{gap:5px}
+.live-row>div{border-radius:10px}
+.live-row span{font-size:clamp(12px,1.9vh,17px)}
+.live-row strong{font-size:clamp(43px,7.5vh,68px);line-height:.9}
+.total-card{grid-template-rows:auto minmax(36px,1fr) 5px minmax(102px,56%);gap:2px}
+.total-clock{font-size:clamp(58px,10vh,88px);line-height:.88}
+.total-grid{gap:5px}
+.total-grid>div{border-radius:10px;padding:1px 2px}
+.total-grid span{font-size:clamp(12px,1.8vh,16px)}
+.total-grid strong{font-size:clamp(37px,6.2vh,56px);line-height:.9}
+.training-controls{gap:5px}
+.control{border-radius:10px;font-size:clamp(12px,1.8vh,16px);padding:1px 2px;min-height:0}
+@media (max-height:650px){
+  .training-view{grid-template-rows:minmax(0,13fr) minmax(0,34fr) minmax(0,46fr) minmax(40px,7fr);gap:3px;padding-top:3px;padding-bottom:3px}
+  .training-card{padding:3px 6px;border-radius:11px}
+  .clock-button strong{font-size:clamp(54px,11vh,78px)}
+  .live-row strong{font-size:clamp(34px,6.6vh,50px)}
+  .total-clock{font-size:clamp(45px,8.5vh,66px)}
+  .total-grid strong{font-size:clamp(30px,5.4vh,43px)}
+  .training-controls{min-height:40px}
+}
+
+
+/* v4.1.005 · jerarquía visual y separación de tarjetas */
+.training-view{
+  grid-template-rows:minmax(0,13fr) minmax(0,33fr) minmax(0,47fr) minmax(44px,7fr);
+  gap:10px;
+}
+.target-card{
+  background:linear-gradient(145deg,#20303a,#18252d);
+  border-left-color:#78a9c3;
+}
+.current-card{
+  background:linear-gradient(145deg,#24342d,#1b2922);
+  border-left-color:#78b48d;
+}
+.total-card{
+  background:linear-gradient(145deg,#302a3a,#25212f);
+  border-left-color:#a38fbd;
+}
+.target-heading{font-size:clamp(13px,1.9vh,17px)}
+.target-heading span{font-size:clamp(12px,1.75vh,16px)}
+.target-metrics span{font-size:clamp(9px,1.35vh,12px)}
+.target-metrics strong{font-size:clamp(16px,2.4vh,22px);line-height:1}
+.target-metrics>div{padding:2px 2px}
+.current-card{grid-template-rows:auto minmax(0,1fr) 5px minmax(62px,34%);gap:2px}
+.clock-button strong{font-size:clamp(61px,11vh,99px);line-height:.9}
+.live-row>div{min-height:0;padding:4px 2px}
+.total-card{grid-template-rows:auto minmax(34px,.72fr) 5px minmax(112px,61%);gap:1px}
+.total-label{line-height:1}
+.total-clock{line-height:.82}
+.total-grid{gap:6px}
+@media (max-height:650px){
+  .training-view{grid-template-rows:minmax(0,13fr) minmax(0,33fr) minmax(0,47fr) minmax(40px,7fr);gap:6px}
+  .target-heading{font-size:clamp(12px,1.8vh,15px)}
+  .target-heading span{font-size:clamp(11px,1.65vh,14px)}
+  .target-metrics span{font-size:clamp(8px,1.25vh,10px)}
+  .target-metrics strong{font-size:clamp(14px,2.2vh,19px)}
+  .clock-button strong{font-size:clamp(46px,9.4vh,66px)}
+  .current-card{grid-template-rows:auto minmax(0,1fr) 5px minmax(54px,34%)}
+  .total-card{grid-template-rows:auto minmax(30px,.7fr) 5px minmax(94px,60%)}
+}
+
+
+/* v4.1.006 · refinamiento de etiquetas y separación interna */
+.target-metrics span{
+  font-size:clamp(11px,1.62vh,14.4px);
+  line-height:1;
+}
+.target-metrics strong{
+  margin-top:12px;
+}
+.total-card{
+  grid-template-rows:auto minmax(34px,.72fr) 5px minmax(112px,61%);
+  row-gap:1px;
+}
+.total-clock{
+  margin-bottom:5px;
+}
+.total-progress{
+  margin-top:5px;
+}
+.total-grid span{
+  font-size:clamp(15px,2.25vh,20px);
+  line-height:1;
+}
+.total-grid strong{
+  margin-top:12px;
+}
+@media (max-height:650px){
+  .target-metrics span{font-size:clamp(9.6px,1.5vh,12px)}
+  .target-metrics strong{margin-top:8px}
+  .total-clock{margin-bottom:3px}
+  .total-progress{margin-top:3px}
+  .total-grid span{font-size:clamp(13px,2.05vh,17px)}
+  .total-grid strong{margin-top:8px}
+}
+
+/* v4.2.001 · depuración funcional */
+.secondary{width:100%;padding:13px;border:1px solid #4c5967;border-radius:14px;background:#25303a;color:#fff;font-weight:800;margin:2px 0 8px}.text-button{width:100%;border:0;background:transparent;color:#9fb1c5;padding:8px;font-weight:700}.phase-row{position:relative}.phase-row .phase-actions{display:flex;gap:6px;grid-column:2/4}.phase-row .phase-actions button{border:0;border-radius:8px;padding:6px 9px;background:#303a45;color:#fff;font-size:12px;font-weight:700}.phase-row .phase-actions .delete-phase{background:#653939}.phase-detail{grid-column:2/4;color:#aeb9c5;font-size:12px;line-height:1.35}.config-section{border-top:1px solid #36404b;margin-top:16px;padding-top:8px}.config-section h3{margin:6px 0;color:#dce6f0;font-size:14px;letter-spacing:.08em}.config-dialog input[type=range]{width:100%}.config-dialog output{float:right;color:#fff}.phase-editor-dialog input:not([type=hidden]){width:100%;border:1px solid #46515d;border-radius:12px;background:#252d36;color:#fff;padding:11px;margin-top:6px}.card-caption{grid-template-columns:auto minmax(0,1fr) auto;align-items:center}.card-caption small{font-size:10px;color:#9fb1c5}.training-view.is-transition .current-card{border-left-color:#e0c23b}.training-view.is-transition .clock-button strong,.training-view.is-transition .clock-button span{color:#e0c23b}
+
+.target-technique{margin-top:.75rem;padding-top:.75rem;border-top:1px solid rgba(255,255,255,.12);display:grid;gap:.25rem}.target-technique span{font-size:.72rem;text-transform:uppercase;opacity:.7}.target-technique strong{font-size:.95rem;line-height:1.35}
+
+/* v5.1 */
+.clock-button.show-remaining strong,.clock-button.show-remaining span{color:#ffbd59!important}
+.rpm-override-label{text-align:center;font-weight:800;color:#dce6f0}.rpm-override{display:block;width:150px!important;margin:0 auto 4px!important;text-align:center;font-size:25px!important;font-weight:900!important;letter-spacing:.04em}.field-help{text-align:center;font-size:12px!important;color:#9fb1c5}.file-button{display:block;border:1px solid #4c5967;border-radius:12px;padding:12px;text-align:center;color:#fff!important;font-weight:800;background:#25303a;cursor:pointer}.file-button input{display:none}.phase-editor-dialog select{width:100%;border:1px solid #46515d;border-radius:12px;background:#252d36;color:#fff;padding:11px;margin-top:6px}
+
+
+/* v5.1.1000 · accesibilidad de Preparar, confirmación ampliada y estabilidad visual */
+.prepare-view .prepare-summary{font-size:1.25rem}
+.prepare-view .phase-row p{font-size:17.5px;line-height:1.35}
+.prepare-view .phase-detail{font-size:15px;line-height:1.45}
+.prepare-view .phase-time{font-size:20px}
+.prepare-view .phase-index{width:37.5px;height:37.5px;font-size:20px}
+.prepare-view .phase-row{grid-template-columns:47.5px 1fr auto;padding:16px;gap:14px}
+.prepare-view .phase-row h3{font-size:17px}
+.prepare-view .phase-actions{gap:8px}
+.prepare-view .phase-actions button{font-size:15px;padding:8px 11px;min-height:38px}
+.prepare-view .secondary{font-size:1.25rem;padding:16px}
+.prepare-view .text-button{font-size:1.06rem;padding:10px}
+.prepare-view .primary{font-size:22.5px;padding:22.5px}
+.finish-dialog{width:min(94vw,460px)}
+.finish-dialog form{padding:23px}
+.finish-dialog h2{font-size:25px;line-height:1.2}
+.finish-dialog p{font-size:22.5px;line-height:1.45;text-align:center}
+.finish-dialog .dialog-actions{gap:13px;margin-top:23px}
+.finish-dialog .dialog-actions .control{font-size:21px;padding:15px 8px;min-height:58px}
+.target-metrics strong,.live-row strong,.total-grid strong,.total-clock,.clock-button strong{font-variant-numeric:tabular-nums}
+.target-metrics>div{min-height:58px}
+
+
+/* v5.1.2000 · preparación compacta, etapa reorganizada y control musical */
+.prepare-view .phase-row{padding:14px 6px;column-gap:8px;row-gap:8px;grid-template-columns:42px minmax(0,1fr) auto}
+.prepare-view .phase-index{justify-self:start;margin-left:0}
+.prepare-view .phase-detail{grid-column:1/4;width:100%;padding:0 1px;font-size:15px;line-height:1.3}
+.prepare-view .phase-actions{grid-column:1/4;width:100%;display:grid;grid-template-columns:minmax(0,2fr) minmax(42px,.75fr) minmax(42px,.75fr) minmax(0,2fr);gap:6px}
+.prepare-view .phase-actions button{width:100%;padding:7px 4px;min-height:36px}
+.current-card{grid-template-rows:auto minmax(0,1fr) 5px minmax(62px,34%);gap:2px}
+.speed-panel{display:grid;place-items:center;align-content:center;min-height:0;background:rgba(255,255,255,.035);border-radius:10px;padding:3px 2px}
+.speed-panel span,.hr-panel span,.clock-button span{font-size:clamp(12px,1.9vh,17px);color:#aeb9c5;line-height:1}
+.speed-panel strong{font-size:clamp(50px,8.4vh,76px);line-height:.9;font-variant-numeric:tabular-nums}
+.stage-bottom-row{display:grid;grid-template-columns:minmax(0,3fr) minmax(44px,1fr) minmax(0,3fr);gap:5px;min-height:0}
+.stage-bottom-row>*{min-width:0;border-radius:10px}
+.stage-bottom-row .clock-button,.hr-panel{background:rgba(255,255,255,.045);border:0;color:#fff;display:grid;place-items:center;align-content:center;padding:3px 2px}
+.stage-bottom-row .clock-button strong,.hr-panel strong{font-size:clamp(31px,5.6vh,50px);line-height:.9;font-variant-numeric:tabular-nums}
+.phase-music-button{border:1px solid rgba(255,255,255,.1);background:linear-gradient(180deg,#4d5860,#39434a);color:#eef4f7;font-size:clamp(24px,4.2vh,38px);font-weight:900;padding:0;touch-action:manipulation}
+.phase-music-button:disabled{opacity:.38}
+.phase-music-button:active{transform:translateY(1px)}
+@media (max-height:650px){
+  .speed-panel strong{font-size:clamp(39px,7.2vh,57px)}
+  .stage-bottom-row .clock-button strong,.hr-panel strong{font-size:clamp(26px,5vh,40px)}
+}
+
+
+/* v5.3.000 · música contextual, guardado e historial */
+.speed-panel strong{font-size:clamp(58px,10vh,88px)}
+.total-grid .distance-stat span{font-size:clamp(12px,1.9vh,17px);text-transform:none}
+.total-grid .distance-stat strong{font-size:clamp(37px,6.2vh,56px)}
+.phase-music-editor{border-top:1px solid #36404b;margin-top:16px;padding-top:8px}.phase-music-editor h3{margin:6px 0;color:#dce6f0;font-size:14px;letter-spacing:.08em}.phase-music-editor p{font-size:12px}.phase-music-editor [hidden]{display:none!important}
+.finish-dialog .finish-actions{grid-template-columns:1fr 1fr 1fr}.finish-dialog .finish-actions .control{font-size:clamp(14px,3.8vw,18px);line-height:1.1}.finish-dialog .finish-actions .pause{background:#d8a928;color:#151515}
+.progress-card{width:100%;display:grid;grid-template-columns:1fr auto;align-items:center;text-align:left;color:var(--text);cursor:pointer}.progress-card-copy{display:grid;gap:7px}.progress-card-copy h2{margin:0}.progress-card-copy strong{font-size:18px}.progress-card-copy span{color:var(--muted)}.progress-donut{--progress:0;width:94px;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--accent) calc(var(--progress)*1%),#303943 0);position:relative}.progress-donut::before{content:"";position:absolute;width:70%;aspect-ratio:1;border-radius:50%;background:#1b2026}.progress-donut span{position:relative;font-size:20px;font-weight:900}
+.history-dialog{width:min(94vw,560px);max-height:88vh}.history-summary{display:grid;place-items:center;gap:4px;padding:14px;border-radius:12px;background:#252d36}.history-summary strong{font-size:28px}.history-summary span{color:var(--muted)}.history-list{display:grid;gap:9px;margin-top:14px;max-height:55vh;overflow:auto}.history-record{border:1px solid #3b4651;border-radius:12px;background:#222a32}.history-record summary{display:flex;justify-content:space-between;gap:10px;padding:13px;cursor:pointer;font-weight:800}.history-record summary strong{color:#aeb9c5}.history-columns{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 13px 13px}.history-columns section{background:#1b2026;border-radius:9px;padding:10px}.history-columns h3{font-size:12px;margin:0 0 8px;color:#9fb1c5}.history-columns p{font-size:13px;margin:5px 0}.empty-history{text-align:center;padding:24px}
+@media(max-width:430px){.finish-dialog .finish-actions{grid-template-columns:1fr}.history-columns{grid-template-columns:1fr}.progress-donut{width:82px}}
+
+
+/* v5.4.000 - navegación de etapas y vista de conducción accesible */
+.current-card{position:relative}
+.phase-speed-navigation{position:relative;padding-left:58px;padding-right:58px}
+.phase-nav-button{position:absolute;top:50%;transform:translateY(-50%);width:clamp(34px,7.5vh,46px);height:clamp(34px,7.5vh,46px);min-width:0;padding:0;border-radius:50%;border:1px solid rgba(255,255,255,.12);background:linear-gradient(180deg,rgba(83,98,108,.92),rgba(54,66,74,.92));color:#eef4f7;font-size:clamp(15px,3.4vh,22px);font-weight:900;line-height:1;box-shadow:0 3px 9px rgba(0,0,0,.24);z-index:3;touch-action:manipulation}
+.phase-nav-previous{left:9px}.phase-nav-next{right:9px}.phase-nav-button:disabled{opacity:.25}.phase-nav-button:active{transform:translateY(-50%) scale(.95)}
+.training-view{position:relative;touch-action:pan-y}
+.driving-view{position:absolute;inset:calc(8px + env(safe-area-inset-top)) 10px calc(66px + env(safe-area-inset-bottom));z-index:20;background:#11171e;display:grid;grid-template-rows:auto minmax(0,1.2fr) minmax(0,1fr) 12px;gap:clamp(10px,2.2vh,20px);padding:clamp(12px,3vw,20px);border-radius:18px;overflow:hidden}
+.driving-view[hidden]{display:none!important}
+.driving-header{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:54px;text-align:center;color:#f5f8fb}
+.driving-header strong{max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:clamp(21px,5.7vw,32px);font-weight:900;line-height:1.05}
+.driving-header span{font-size:clamp(16px,4.4vw,24px);font-weight:750;color:#c6d0da;line-height:1.1}
+.driving-speed-block{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:0}
+.driving-speed-block strong{font-size:clamp(110px,34.8vw,206px);font-weight:950;line-height:.8;letter-spacing:-.055em;font-variant-numeric:tabular-nums;color:#fff;text-shadow:0 2px 5px rgba(0,0,0,.55)}
+.driving-speed-block span{font-size:clamp(29px,7.8vw,47px);font-weight:900;margin-top:15px;color:#f5f8fb}
+.driving-secondary-grid{display:grid;grid-template-columns:1fr;grid-template-rows:1fr 1fr;gap:clamp(9px,1.7vh,15px);min-height:0}
+.driving-secondary-grid>div{display:grid;grid-template-columns:1fr auto auto;align-items:center;column-gap:9px;padding:clamp(10px,2.3vw,16px) clamp(14px,4vw,24px);background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.08);border-radius:16px}
+.driving-secondary-grid span{font-size:clamp(17px,4.5vw,25px);font-weight:800;color:#c5cfda}
+.driving-secondary-grid strong{font-size:clamp(50px,14.2vw,84px);font-weight:950;line-height:.88;font-variant-numeric:tabular-nums;text-align:right}
+.driving-secondary-grid small{font-size:clamp(17px,4.5vw,25px);font-weight:800;color:#c5cfda;align-self:end;padding-bottom:4px}
+.driving-distance-card strong{color:#7fe59a}
+.driving-average-card strong{color:#85d9ff}
+.driving-progress{height:12px;background:#303943;border-radius:999px;overflow:hidden}.driving-progress i{display:block;width:0;height:100%;background:var(--zone-color,var(--green));transition:width .25s linear}
+.training-pager{position:absolute;z-index:25;left:50%;bottom:calc(59px + env(safe-area-inset-bottom));transform:translateX(-50%);display:flex;gap:8px;padding:4px 8px;border-radius:999px;background:rgba(0,0,0,.18)}
+.training-pager i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.28)}.training-pager i.active{background:var(--green)}
+@media(max-height:650px){.phase-speed-navigation{padding-left:50px;padding-right:50px}.phase-nav-button{width:32px;height:32px}.driving-view{bottom:calc(52px + env(safe-area-inset-bottom));gap:8px;padding:10px}.training-pager{bottom:calc(47px + env(safe-area-inset-bottom))}.driving-header{min-height:44px}.driving-speed-block strong{font-size:clamp(96px,30vw,170px)}.driving-secondary-grid strong{font-size:clamp(42px,12vw,68px)}}
+
+/* v5.4.000 biblioteca musical por carpeta */
+.music-library-card{margin-top:12px;padding:13px;border:1px solid rgba(255,255,255,.13);border-radius:14px;background:rgba(255,255,255,.035)}
+.music-library-head{display:flex;justify-content:space-between;gap:10px;align-items:center}.music-library-head span{font-size:.78rem;padding:5px 8px;border-radius:999px;background:rgba(255,255,255,.08)}
+.music-library-head span.ok{color:#8ff0be;background:rgba(66,211,146,.15)}.music-library-head span.warn{color:#ffd98c;background:rgba(255,204,102,.14)}
+.music-folder-name{margin:8px 0;color:var(--muted);word-break:break-word}.music-library-meta{display:grid;gap:4px;font-size:.84rem;color:var(--muted)}
+.music-library-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:11px}.music-library-actions button{min-height:44px}.music-file-fallback{margin-top:9px}
+
+
+/* v5.4.300 · consolidación visual y ergonómica previa a APK */
+html,
+body{
+  overscroll-behavior-x:none;
+  overscroll-behavior-y:none;
+}
+dialog,
+.config-dialog,
+.config-dialog form,
+.history-list,
+.phase-list{
+  overscroll-behavior-y:contain;
+}
+dialog[open]{overscroll-behavior:none}
+
+/* Inicio más compacto, sin alterar el estilo general. */
+#homeView .card{padding-bottom:8px}
+#homeView .card h2{margin-bottom:5px}
+#homeView .selectors select{padding-top:6.5px;padding-bottom:6.5px}
+#homeView .phase-name{font-size:16.8px;margin-bottom:7px}
+#homeView .phase .label{margin-bottom:4px}
+#homeView .phase #phaseObjective{margin-bottom:2.5px}
+#homeView .metrics{gap:7px 10px}
+#homeView .metrics>div{padding-top:5px;padding-bottom:5px}
+#homeView .metrics .label{margin-bottom:4px}
+#homeView .distance{margin-top:6.5px;margin-bottom:2.5px}
+#homeView .nutrition p,
+#homeView .technique p{font-size:17px;margin-bottom:2.5px}
+#homeView .progress-card-copy{gap:3.5px}
+
+/* Configuración inmediata antes de iniciar y selector AUTO de cadencia. */
+.prepare-config-button{margin-top:2px;margin-bottom:8px}
+.rpm-override-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:stretch;max-width:250px;margin:0 auto 4px}
+.rpm-override-row .rpm-override{width:100%!important;margin:0!important}
+.rpm-auto-button{min-width:68px;border:1px solid #5d6c79;border-radius:12px;background:#303a45;color:#fff;font-weight:900;padding:0 11px}
+.rpm-auto-button:active{transform:translateY(1px)}
+
+/* Etapa: icono de voz y control musical persistente. */
+.phase-title-voice{min-width:0;flex:1;display:flex;align-items:center;justify-content:center;gap:6px}
+.phase-title-voice strong{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.phase-speaker-icon{flex:0 0 auto;font-size:1.05em;line-height:1;opacity:.9}
+#currentStageCard{cursor:pointer}
+.phase-music-button.is-user-paused{box-shadow:inset 0 0 0 1px rgba(255,213,90,.5)}
+
+/* Acumulado: etiqueta explícita del reloj total sin cambiar la grilla. */
+.total-card{position:relative}
+.total-time-label{position:absolute;z-index:2;left:50%;top:clamp(18px,2.7vh,24px);transform:translateX(-50%);color:#9fb1c5;font-size:clamp(10px,1.55vh,13px);font-weight:800;white-space:nowrap;pointer-events:none}
+
+/* Vista ciclista: secundarios +20 % para lectura en marcha. */
+.driving-secondary-grid span{font-size:clamp(20.4px,5.4vw,30px)}
+.driving-secondary-grid strong{font-size:clamp(60px,17.04vw,100.8px)}
+.driving-secondary-grid small{font-size:clamp(20.4px,5.4vw,30px)}
+@media(max-height:650px){.driving-secondary-grid strong{font-size:clamp(50.4px,14.4vw,81.6px)}}
+
+/* Historial: eliminación individual del registro. */
+.history-record summary{align-items:center}
+.history-summary-actions{display:flex;align-items:center;gap:8px;flex:0 0 auto}
+.history-delete{width:25px;height:25px;display:grid;place-items:center;border:0;border-radius:50%;background:#9b4040;color:#fff;font-size:19px;font-weight:900;line-height:1;padding:0;cursor:pointer}
+.history-delete:active{transform:scale(.94)}
+/* Auditoría visual v5.4.300: reloj total ajustado también al ancho disponible. */
+.total-clock{font-size:clamp(50px,15.6vw,78px);letter-spacing:-.025em}
